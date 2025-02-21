@@ -59,11 +59,11 @@ A test to verify that the correct output is displayed
 ### Actual Output: 
 ./fib
 10
-10th fibonacci number is 55
+Fibonacci number #10 is 55
 20
-20th fibonacci number is 6765
+Fibonacci number #20 is 6765
 30
-30th fibonacci number is 832040
+Fibonacci number #30 is 832040
 
 
 # Test Case 4: Program Is Storing and Reusing Memoized Values
@@ -131,8 +131,10 @@ Using cached fibonacci(22) = 17711
 Calculating fibonacci(24) = 46368
 Using cached fibonacci(23) = 28657
 Calculating fibonacci(25) = 75025
-25th fibonacci number is 75025
+Fibonacci number #25 is 75025
 Fibonacci Cache:
+fib_cache[0] = 0
+fib_cache[1] = 1
 fib_cache[2] = 1
 fib_cache[3] = 2
 fib_cache[4] = 3
@@ -159,8 +161,10 @@ fib_cache[24] = 46368
 fib_cache[25] = 75025
 24
 Using cached fibonacci(24) = 46368
-24th fibonacci number is 46368
+Fibonacci number #24 is 46368
 Fibonacci Cache:
+fib_cache[0] = 0
+fib_cache[1] = 1
 fib_cache[2] = 1
 fib_cache[3] = 2
 fib_cache[4] = 3

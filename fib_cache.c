@@ -7,7 +7,11 @@ long long fib_cache[CACHE_SIZE]; // Define the cache array
 // ================================================== //
 
 void initialize_cache() {
-    for (int cache_entry = 0; cache_entry < CACHE_SIZE; cache_entry++) {
+
+    fib_cache[0] = 0;
+    fib_cache[1] = 1; 
+
+    for (int cache_entry = 2; cache_entry < CACHE_SIZE; cache_entry++) {
         fib_cache[cache_entry] = NOT_PRESENT;
     }
 }
@@ -18,9 +22,7 @@ void initialize_cache() {
 // compute and cache the result.                         // 
 // ===================================================== //
 
-long long cached_fibonacci(int nth_number) {
-    if (nth_number == 0) return 0;
-    if (nth_number == 1) return 1;
+long long fibonacci_cache(int nth_number) {
 
     if (fib_cache[nth_number] == NOT_PRESENT) {
         fib_cache[nth_number] = (*original_provider)(nth_number);
