@@ -10,7 +10,7 @@ CFLAGS = -Wall -g
 TARGET = fib 
 
 # Object files
-OBJS = fibonacci.o fib_cache.o
+OBJS = fibonacci.o cache.o
 
 # Default target
 all: $(TARGET)
@@ -20,11 +20,11 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
 
 # Compile source files to object files
-fibonacci.o: fibonacci.c fib_cache.h
+fibonacci.o: fibonacci.c cache.h
 	$(CC) $(CFLAGS) -c fibonacci.c -o fibonacci.o
 
-fib_cache.o: fib_cache.c fib_cache.h
-	$(CC) $(CFLAGS) -c fib_cache.c -o fib_cache.o
+cache.o: cache.c cache.h
+	$(CC) $(CFLAGS) -c cache.c -o cache.o
 
 # Clean up build files
 clean:

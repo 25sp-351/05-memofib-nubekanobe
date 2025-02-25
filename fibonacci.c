@@ -1,12 +1,12 @@
 #include <string.h> 
-#include "fib_cache.h"
+#include "cache.h"
 
 #define BUFFER_SIZE 10
 #define MAX_FIB 92 // 
 
 
 // ========== FUNCTION POINTERS ================ // 
-long_func_ptr fibonacci_cache_provider = NULL; 
+long_func_ptr assigned_provider = NULL; 
 long_func_ptr original_provider = NULL; 
 
 // ============ PROTOTYPES ========= //
@@ -21,9 +21,8 @@ int main(int argc, char *argv[]){
         return 1; 
     };
 
-    initialize_cache(); 
-    original_provider = fibonacci; 
-    fibonacci_cache_provider = fibonacci_cache; 
+    assigned_provider = fibonacci; 
+    assigned_provider = initialize_cache(fibonacci, use_cache); 
 
     int nth_number; 
     int parsed_char_count; 
@@ -38,13 +37,13 @@ int main(int argc, char *argv[]){
         }
 
         if (nth_number <= MAX_FIB){
-            printf("Fibonacci number #%d is %lld\n", nth_number, (*fibonacci_cache_provider)(nth_number));  
+            printf("Fibonacci number #%d is %lld\n", nth_number, (*assigned_provider)(nth_number));  
         } else {
             printf("LONG LONG INT can only store up to %dth fibonacci number\n", MAX_FIB); 
         }
         
-        // DEBUG AND TESTING CACHE // 
-        // print_cache(); 
+        // DEBUG AND TESTING CACHE -- MUST INITIALIZE CACHE TO USE // 
+        //print_cache(); 
     }
 }
 
@@ -60,5 +59,5 @@ long long fibonacci(int nth_number){
     if (nth_number == 0) return 0; 
     if (nth_number == 1) return 1; 
     
-    return (*fibonacci_cache_provider)(nth_number - 1) + (*fibonacci_cache_provider)(nth_number - 2); 
+    return (*assigned_provider)(nth_number - 1) + (*assigned_provider)(nth_number - 2); 
 }
